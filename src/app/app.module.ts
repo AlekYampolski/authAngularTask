@@ -20,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { environment } from '../environments/environment';
 import { BootGuard } from './_guard/boot.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BootGuard } from './_guard/boot.guard';
     LoginComponent,
     DashboardComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

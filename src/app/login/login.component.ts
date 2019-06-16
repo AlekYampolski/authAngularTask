@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,17 +12,17 @@ import { AuthfbService } from '../_services/authfb.service';
   providers: [AuthfbService]
 })
 export class LoginComponent implements OnInit {
+
   private loginForm: FormGroup;
-  submitted = false;
-  loading = false;
+  private submitted = false;
+  private loading = false;
   emailPattern = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$';
+
   constructor(
     private formBuilder: FormBuilder,
     private authfb: AuthfbService,
     private router: Router,
-    ) {
-
-  }
+    ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({

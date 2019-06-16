@@ -15,19 +15,19 @@ export class HomeComponent implements OnInit {
   constructor(
     public authService: AuthfbService,
     private router: Router,
-    public userC: UserService
+    public userService: UserService
     ) {
-      userC.getCurrentUser().then( res => {
+      userService.getCurrentUser().then( res => {
         this.currentUser = res.displayName;
       });
     }
 
-  logOut() {
+  logOut(): void {
     this.authService.logOut().then( () => {
       this.router.navigate(['/dashboard']);
     });
-    return ;
   }
+
   ngOnInit() {
 
   }

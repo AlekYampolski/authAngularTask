@@ -12,10 +12,11 @@ import { AuthfbService } from '../_services/authfb.service';
   providers: [AuthfbService]
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
-  emailPattern = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$';
-  loading = false;
-  submitted = false;
+
+  private registerForm: FormGroup;
+  private emailPattern = '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$';
+  private loading = false;
+  private submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,10 +26,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      userName: ['some', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      email: ['some@gmail.com', Validators.compose([Validators.required, Validators.pattern(this.emailPattern)])  ],
-      confirmPassword: ['123456', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-      password: ['123456', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
+      userName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      email: ['', Validators.compose([Validators.required, Validators.pattern(this.emailPattern)])  ],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
@@ -38,17 +39,18 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+
     if (this.registerForm.invalid) {
-      console.log('ivalid');
       return;
     }
+
     const controls = this.registerForm.controls;
     const email = controls.email.value;
     const password = controls.password.value;
     const userName = controls.userName.value;
     const emailError = controls.email;
-    // const form = this.registerForm;
     this.loading = true;
+
     this.authfb.doRegister(email, password, userName).then(res => {
       this.loading = false;
       this.router.navigate(['/home']);

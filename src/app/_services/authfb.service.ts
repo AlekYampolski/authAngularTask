@@ -14,8 +14,7 @@ export class AuthfbService {
         this.db.collection('users').doc(id).set({
             username,
             email
-        })
-        .then(() => console.log('success')).catch(err => console.log(err));
+        });
     }
 
     doRegister(email, password, username): Promise<any> {
@@ -27,9 +26,10 @@ export class AuthfbService {
                     })
                     .then(() => {
                         resolve(res);
-                    this.createUserDoc(res.user.uid, email, username);
-                    }, err => reject(err));
-                }, err => {
+                        this.createUserDoc(res.user.uid, email, username);
+                    });
+                })
+                .catch( err => {
                     reject(err);
                 });
         });
