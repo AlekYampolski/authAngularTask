@@ -11,7 +11,7 @@ import { UserService } from '../_services/user.service';
   providers: [AuthfbService, UserService]
 })
 export class HomeComponent implements OnInit {
-  currentUser: any;
+  currentUser: string;
   constructor(
     public authService: AuthfbService,
     private router: Router,

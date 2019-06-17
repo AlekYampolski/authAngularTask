@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 
 import { UserService } from '../_services/user.service';
 
@@ -15,6 +15,7 @@ export class AuthGuard implements CanActivate {
        return new Promise( (resolve) => {
            this.userService.getCurrentUser()
             .then( user => {
+                this.router.navigate(['/home']);
                 resolve(false);
             }, err => {
                 resolve(true);

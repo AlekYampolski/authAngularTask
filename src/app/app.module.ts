@@ -19,7 +19,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { environment } from '../environments/environment';
-import { BootGuard } from './_guard/boot.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -40,7 +39,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AngularFirestoreModule,
     AngularFontAwesomeModule
   ],
-  providers: [AuthfbService, UserService, AuthGuard, BootGuard, HomeGuard],
+  providers: [AuthfbService, UserService, AuthGuard, HomeGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

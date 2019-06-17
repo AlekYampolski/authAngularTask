@@ -56,7 +56,7 @@
                   *ngIf="submitted && f.email.errors"
                 >
                   <div *ngIf="f.email.errors.required">Email is required</div>
-                  <div *ngIf="f.email.errors.email">
+                  <div *ngIf="f.email.errors.pattern">
                     Email must be a valid email address
                   </div>
                   <div *ngIf="f.email.errors.serverErrs">
